@@ -21,7 +21,7 @@ public class Student_Controller {
     @GetMapping("/students")
     public String listStudent(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
-        return "studentsData";
+        return "/studentsData";
     }
 
     @GetMapping("/students/new")
@@ -31,42 +31,51 @@ public class Student_Controller {
         return "/student_form";
     }
 
-    @PostMapping("/students")
+    @PostMapping("/studentsform")
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentService.saveStudent(student);
         return "redirect:/students";
     }
 
-    int index;
-
+    //int index;
     @GetMapping("/students/{id}")
     public String updateStudent(@PathVariable int id, Model model) {
-        index = 0;
-        for (Student student : studentService.getAllStudents()) {
-            if (student.getStudentId() == id) {
-                model.addAttribute("student", student);
-            }
-            index++;
-        }
-        return "update_student";
+        model.addAttribute("student",studentService.getStudentId(id));
+
+//        index = 0;
+//        for (Student student : studentService.getAllStudents()) {
+//            if (student.getStudentId() == id) {
+//                model.addAttribute("student", student);
+//                break;
+//            }
+//            index++;
+//        }
+        return "/update_student";
     }
-    @PostMapping("/studentData")
-    public String updateStudentMeth(Student student){
-        studentService.getAllStudents().set(index,student);
+
+    @PostMapping("/studentData/{id}")
+    public String updateStudentMeth(@PathVariable int id, @ModelAttribute("student") Student student, Model model) {
+        Student existingStudent = studentService.getStudentId(id);
+        existingStudent.setStudentId(id);
+        existingStudent.setStudentName(student.getStudentName());
+        existingStudent.setStudentEmail(student.getStudentEmail());
+        existingStudent.setStudentContact(student.getStudentContact());
+
+        studentService.updateStudent(existingStudent);
+
         return "redirect:/students";
     }
 
-//    @PostMapping("/students/{id}")
-//    public String updateStudentMeth(@PathVariable int id, @ModelAttribute("student") Student student, Model model) {
-//        //get student from databases by id
-//        Student existingStudent = studentService.getStudentId(id);
-//        existingStudent.setStudentId(id);
-//        existingStudent.setStudentName(student.getStudentName());
-//        existingStudent.setStudentEmail(student.getStudentEmail());
-//        existingStudent.setStudentContact(student.getStudentContact());
-//
-//        //save updated onject
-//        studentService.updateStudent(existingStudent);
-//        return "redirect:/students";
-//    }
+    @GetMapping("/deleteBook/{id}")
+    public String deleteStudent(@PathVariable int id) {
+            studentService.deleteStudentById(id);
+
+//        for (Student student : studentService.getAllStudents()) {
+//            if (student.getStudentId() == id){
+//                studentService.getAllStudents().remove(student);
+//                break;
+//            }
+//        }
+        return "redirect:/students";
+    }
 }

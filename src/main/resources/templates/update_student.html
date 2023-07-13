@@ -30,7 +30,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Update Student</h1>
             <div class="card-body">
-                <form th:action="@{/studentData}" th:object="${student}" method="post">
+                <form th:action="@{/studentData/{id}}" th:object="${student}" method="post">
                     <div class="form-group">
                         <label>Student ID</label>
                         <input type="number" name="id" th:field="*{studentId}" placeholder="Enter Student ID"
