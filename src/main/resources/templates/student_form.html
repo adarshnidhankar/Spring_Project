@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>Student Name</label>
-                        <input type="text" name="name" th:field="*{studentName}"  placeholder="Enter Student Name" class="form-control" required>
+                        <input type="text" name="name" th:field="*{studentName}"   placeholder="Enter Student Name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Email</label>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label>Student Contact </label>
-                        <input type="tel" name="contact" th:field="*{studentContact}" maxlength="10" minlength="10" placeholder="Enter Student Contact Number" class="form-control" required>
+                        <input type="tel" name="contact" th:field="*{studentContact}" pattern="[0-9]{10}" maxlength="10" minlength="10" placeholder="Enter Student Contact Number" class="form-control" required>
                     </div>
                     <br>
                     <div class="box-footer">
