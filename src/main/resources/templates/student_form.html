@@ -25,7 +25,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container" style="margin-top: 20px;">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Adding New Student</h1>
@@ -33,20 +33,21 @@
                 <form th:action="@{/studentsform}" th:object="${studentNew}" method="post">
                     <div class="form-group">
                         <label>Student ID</label>
-                        <input type="number" name="id" th:field="*{studentId}" placeholder="Enter Student ID" class="form-control">
+                        <input type="number" name="id" th:field="*{studentId}" autofocus  placeholder="Enter Student ID" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Name</label>
-                        <input type="text" name="name" th:field="*{studentName}" placeholder="Enter Student Name" class="form-control">
+                        <input type="text" name="name" th:field="*{studentName}"  placeholder="Enter Student Name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Email</label>
-                        <input type="text" name="email" th:field="*{studentEmail}" placeholder="Enter Student Email" class="form-control">
+                        <input type="email" name="email" th:field="*{studentEmail}" placeholder="Enter Student Email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Contact </label>
-                        <input type="number" name="contact" th:field="*{studentContact}" placeholder="Enter Student Contact Number" class="form-control">
+                        <input type="tel" name="contact" th:field="*{studentContact}" maxlength="10" minlength="10" placeholder="Enter Student Contact Number" class="form-control" required>
                     </div>
+                    <br>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">ADD DATA</button>
                     </div>

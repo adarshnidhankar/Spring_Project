@@ -30,26 +30,27 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Update Student</h1>
             <div class="card-body">
-                <form th:action="@{/studentData/{id}}" th:object="${student}" method="post">
+                <form th:action="@{/studentData/{id}(id=${student.studentId})}" th:object="${student}" method="post">
                     <div class="form-group">
                         <label>Student ID</label>
-                        <input type="number" name="id" th:field="*{studentId}" placeholder="Enter Student ID"
-                              readonly class="form-control">
+                        <input type="number" th:field="*{studentId}" placeholder="Enter Student ID"
+                               readonly class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Student Name</label>
-                        <input type="text" name="name" th:field="*{studentName}" placeholder="Enter Student Name"
-                              required autocomplete="off" class="form-control">
+                        <input type="text" th:field="*{studentName}" placeholder="Enter Student Name"
+                               required autocomplete="off" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Student Email</label>
-                        <input type="text" name="email" th:field="*{studentEmail}" placeholder="Enter Student Email"
+                        <input type="email" th:field="*{studentEmail}" placeholder="Enter Student Email"
                                required autocomplete="off" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Student Contact </label>
-                        <input type="number" name="contact" th:field="*{studentContact}"
-                               placeholder="Enter Student Contact Number" required autocomplete="off" class="form-control">
+                        <input type="tel" th:field="*{studentContact}"
+                               placeholder="Enter Student Contact Number" maxlength="10" minlength="10" required autocomplete="off"
+                               class="form-control">
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-warning">UPDATE</button>

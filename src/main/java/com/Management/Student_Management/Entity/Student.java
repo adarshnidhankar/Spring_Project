@@ -22,5 +22,5 @@ public class Student {
     @Column(name = "email")
     private String studentEmail;
     @Column(name = "contact")
-    private double studentContact;
+    private String studentContact;
 }
