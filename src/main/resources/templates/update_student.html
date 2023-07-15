@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -31,36 +30,37 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Update Student</h1>
             <div class="card-body">
-                <form th:action="@{/studentData/{id}(id=${student.studentId})}" th:object="${student}" method="post" >
-                    <div class="form-group" >
+                <form th:action="@{/studentData/{id}(id=${student.studentId})}" th:object="${student}" method="post"
+                      name="form1">
+                    <div class="form-group">
                         <label>Student ID</label>
                         <input type="number" th:field="*{studentId}" placeholder="Enter Student ID"
-                               readonly class="form-control">
+                               readonly class="form-control" name="id">
                     </div>
                     <div class="form-group">
                         <label>Student Name</label>
                         <input type="text" th:field="*{studentName}" id="stuName" placeholder="Enter Student Name"
-                               required autocomplete="off" class="form-control">
+                               required autocomplete="off" class="form-control" name="sName">
                     </div>
                     <div class="form-group">
                         <label>Student Email</label>
                         <input type="email" th:field="*{studentEmail}" placeholder="Enter Student Email"
-                               required autocomplete="off" class="form-control">
+                               required autocomplete="off" class="form-control" name="sMail">
                     </div>
                     <div class="form-group">
                         <label>Student Contact </label>
                         <input type="tel" th:field="*{studentContact}"
-                               placeholder="Enter Student Contact Number" maxlength="10" minlength="10" pattern="[0-9]{10}" required autocomplete="off"
+                               placeholder="Enter Student Contact Number" maxlength="10" minlength="10"
+                               pattern="[0-9]{10}" required autocomplete="off" name="sContact"
                                class="form-control">
                     </div>
                     <div class="box-footer">
-                        <button type="submit" onclick="nameValidate()" class="btn btn-warning">UPDATE</button>
+                        <button type="submit" class="btn btn-warning">UPDATE</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script src="../static/studentValidation.js"></script>
 </body>
 </html>
