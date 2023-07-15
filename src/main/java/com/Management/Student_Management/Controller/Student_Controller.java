@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class Student_Controller {
-    private Student_Service studentService;
-
+    private final Student_Service studentService;
     public Student_Controller(Student_Service studentService) {
         super();
         this.studentService = studentService;
