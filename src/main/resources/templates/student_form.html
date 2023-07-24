@@ -30,22 +30,26 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Adding New Student</h1>
             <div class="card-body">
-                <form th:action="@{/studentsform}" th:object="${studentNew}" method="post">
+                <form th:action="@{/studentsform}" th:object="${studentNew}" name="myform" method="post">
                     <div class="form-group">
                         <label>Student ID</label>
-                        <input type="number" name="id" th:field="*{studentId}" autofocus  placeholder="Enter Student ID" class="form-control" required>
+                        <input type="number" name="id" th:field="*{studentId}" autofocus placeholder="Enter Student ID"
+                               class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Name</label>
-                        <input type="text" name="name" th:field="*{studentName}"   placeholder="Enter Student Name" class="form-control" required>
+                        <input type="text" name="name" th:field="*{studentName}" placeholder="Enter Student Name"
+                               class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Email</label>
-                        <input type="email" name="email" th:field="*{studentEmail}" placeholder="Enter Student Email" class="form-control" required>
+                        <input type="email" name="email" th:field="*{studentEmail}" placeholder="Enter Student Email"
+                               class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Student Contact </label>
-                        <input type="tel" name="contact" th:field="*{studentContact}" pattern="[0-9]{10}" maxlength="10" minlength="10" placeholder="Enter Student Contact Number" class="form-control" required>
+                        <input type="tel" name="contact" th:field="*{studentContact}" pattern="[0-9]{10}" maxlength="10"
+                               minlength="10" placeholder="Enter Student Contact Number" class="form-control" required>
                     </div>
                     <br>
                     <div class="box-footer">
